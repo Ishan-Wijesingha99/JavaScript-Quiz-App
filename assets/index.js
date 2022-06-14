@@ -8,6 +8,7 @@ const questionBtnNodeList = document.querySelectorAll('.option-btn');
 const btnGrid = document.querySelector('.btn-grid');
 const correctOrWrongText = document.querySelector('#correct-or-wrong-text');
 
+
 // zero based
 let questionNumber = 0;
 
@@ -42,6 +43,66 @@ const questionsArray = [
         question: 'Which of the following is not a data type in JavaScript?',
         options: ['Sets', 'Maps', 'Arrays', 'Subjects'],
         correctAnswer: 'Subjects'
+    },
+
+    {
+        question: 'What is the process by which numbers are automatically converted in strings in JavaScript?',
+        options: ['Typeof', 'Type coersion', 'Type conversion', 'Type convention'],
+        correctAnswer: 'Type coersion'
+    },
+
+    {
+        question: 'Which of the following is the correct way to write a comment in CSS?',
+        options: ['//comment', '/ comment /', '<!-- comment -->', '/* comment */'],
+        correctAnswer: '/* comment */'
+    },
+
+    {
+        question: 'Which of the following rounds down -8.98 to -9',
+        options: ['Math.trunc(-8.98)', 'Math.random(-8.98)', 'Math.floor(-8.98)', 'Math.ceil(-8.98)'],
+        correctAnswer: 'Math.floor(-8.98)'
+    },
+
+    {
+        question: 'Which attribute must you add to a HTML element for a webpage to open in a new tab?',
+        options: ['target="_window"', 'target="_new"', 'target="_tab"', 'target="_blank"'],
+        correctAnswer: 'target="_blank"'
+    },
+
+    {
+        question: 'Which of the following is the proper way to define a variable in JavaScript?',
+        options: ['const = SecondFamilyName', 'const = secondFamilyName', 'const = second-family-name', 'const = second_family_name'],
+        correctAnswer: 'const = secondFamilyName'
+    },
+
+    {
+        question: 'Which of the following CSS properties control the underline of text?',
+        options: ['font-display: underline;', 'decorate-content: underline;', 'text-decoration: underline;', 'font-style: underline;'],
+        correctAnswer: 'text-decoration: underline;'
+    },
+
+    {
+        question: 'In CSS, where do we define CSS variables?',
+        options: ['in body', 'in head', 'in :root', 'in *'],
+        correctAnswer: 'in :root'
+    },
+
+    {
+        question: 'Which CSS property controls the font of the text?',
+        options: ['font-style', 'font-decoration', 'font-family', 'font-weight'],
+        correctAnswer: 'font-family'
+    },
+
+    {
+        question: 'Which of the following is not apart of the CSS Box Model?',
+        options: ['Padding', 'Edges', 'Margin', 'Border'],
+        correctAnswer: 'Edges'
+    },
+
+    {
+        question: 'Which of these is the largest HTML element?',
+        options: ['h1', 'section', 'h4', 'heading'],
+        correctAnswer: 'h1'
     }
 ]
 
