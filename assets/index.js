@@ -53,7 +53,7 @@ const questionsArray = [
 
     {
         question: 'Which of the following is the correct way to write a comment in CSS?',
-        options: ['//comment', '/ comment /', '<!-- comment -->', '/* comment */'],
+        options: ['//comment', '/ comment /', `-- comment --`, '/* comment */'],
         correctAnswer: '/* comment */'
     },
 
@@ -106,14 +106,17 @@ const questionsArray = [
     }
 ]
 
-// ['<body></body>', '<html></html>', '<heading></heading>', '<head></head>']
+let randomQuestionsArray = questionsArray.sort(() => Math.random() - 0.5);
+
+
+
 
 
 const startQuiz = function() {
-    questionElement.textContent = questionsArray[questionNumber].question;
+    questionElement.textContent = randomQuestionsArray[questionNumber].question;
 
     questionBtnNodeList.forEach(function(element, i) {
-        element.innerHTML = questionsArray[questionNumber].options[i];
+        element.innerHTML = randomQuestionsArray[questionNumber].options[i];
     })
 }
 
@@ -125,9 +128,19 @@ const nextQuestion = function() {
 const pressStartBtn = function() {
     quizSection.classList.toggle('hide');
     startBtn.classList.toggle('hide');
-    questionElement.classList.toggle('hide');
     startQuiz();
 }
+
+const endOfGame = function() {
+    quizSection.classList.toggle('hide');
+    startBtn.classList.toggle('hide');
+    questionNumber = 0;
+    console.log(questionNumber);
+    randomQuestionsArray = questionsArray.sort(() => Math.random() - 0.5);
+}
+
+
+
 
 startBtn.addEventListener('click', pressStartBtn)
 
@@ -150,10 +163,18 @@ highscoreBtn.addEventListener('click', toggleHighScoreScreen)
 
 // choosing an option for the question
 btnGrid.addEventListener('click', function(e) {
-    if(e.target.innerHTML === questionsArray[questionNumber].correctAnswer) {
+
+    if(questionNumber === 14) {
+        alert('out of Qs')
+        endOfGame();
+        return
+    }
+
+    if(e.target.innerHTML === randomQuestionsArray[questionNumber].correctAnswer) {
         correctOrWrongText.textContent = 'Correct!';
         nextQuestion();
-    } else if(e.target.innerHTML !== questionsArray[questionNumber].correctAnswer) {
+
+    } else if(e.target.innerHTML !== randomQuestionsArray[questionNumber].correctAnswer) {
         correctOrWrongText.textContent = 'Wrong!';
         nextQuestion();
     }
