@@ -7,10 +7,32 @@ const questionElement = document.querySelector('#question');
 const questionBtnNodeList = document.querySelectorAll('.option-btn');
 const btnGrid = document.querySelector('.btn-grid');
 const correctOrWrongText = document.querySelector('#correct-or-wrong-text');
-
+const allGridBtns = document.querySelectorAll('.option-btn');
+const currentHighscoreDisplay = document.querySelector('#display-highscore');
+const currentGameScore = document.querySelector('#current-game-score')
 
 // zero based
 let questionNumber = 0;
+let score = 0;
+let currentHighscore = 0;
+
+
+// function to display the current highscore
+const displayCurrentHighscore = function() {
+    currentHighscoreDisplay.textContent = `Current High score: ${currentHighscore}`;
+}
+
+displayCurrentHighscore();
+
+
+
+// function to display the current game score
+const displayCurrentGameScore = function() {
+    currentGameScore.textContent = `Score: ${score}`;
+}
+
+
+
 
 
 
@@ -115,10 +137,13 @@ let randomQuestionsArray = questionsArray.sort(() => Math.random() - 0.5);
 const startQuiz = function() {
     questionElement.textContent = randomQuestionsArray[questionNumber].question;
 
+    displayCurrentGameScore()
+
     questionBtnNodeList.forEach(function(element, i) {
         element.innerHTML = randomQuestionsArray[questionNumber].options[i];
     })
 }
+
 
 const nextQuestion = function() {
     questionNumber++;
@@ -135,8 +160,12 @@ const endOfGame = function() {
     quizSection.classList.toggle('hide');
     startBtn.classList.toggle('hide');
     questionNumber = 0;
-    console.log(questionNumber);
     randomQuestionsArray = questionsArray.sort(() => Math.random() - 0.5);
+    
+    // before we set the score back to 0, check if score is greater than the current high score
+    
+
+    score = 0;
 }
 
 
@@ -172,9 +201,12 @@ btnGrid.addEventListener('click', function(e) {
 
     if(e.target.innerHTML === randomQuestionsArray[questionNumber].correctAnswer) {
         correctOrWrongText.textContent = 'Correct!';
+        score++;
+        displayCurrentGameScore();
         nextQuestion();
 
-    } else if(e.target.innerHTML !== randomQuestionsArray[questionNumber].correctAnswer) {
+    } else if((e.target === allGridBtns[0] || e.target === allGridBtns[1] || e.target === allGridBtns[2] || e.target === allGridBtns[3]) && e.target.innerHTML !== randomQuestionsArray[questionNumber].correctAnswer) 
+    {
         correctOrWrongText.textContent = 'Wrong!';
         nextQuestion();
     }
