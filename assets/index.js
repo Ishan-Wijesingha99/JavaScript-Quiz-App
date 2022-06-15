@@ -1,4 +1,5 @@
 const highscoreBtn = document.querySelector('#high-score-btn');
+const countdownElement = document.querySelector('#countdown');
 const questionContainer = document.querySelector('.question-container');
 const highscoreScreen = document.querySelector('.highscore-screen');
 const startBtn = document.querySelector('#start-button');
@@ -16,13 +17,27 @@ let questionNumber = 0;
 let score = 0;
 let currentHighscore = 0;
 
+let timeLeft = 40;
+let initials = '';
+
 
 // function to display the current highscore
 const displayCurrentHighscore = function() {
-    currentHighscoreDisplay.textContent = `Current High score: ${currentHighscore}`;
+    if(currentHighscore === 0) {
+        currentHighscoreDisplay.textContent = `Current High score: ${currentHighscore}`
+    } else if(currentHighscore >= 0) {
+        initials = askforInitials();
+        currentHighscoreDisplay.textContent = `Current High score by ${initials}: ${currentHighscore}`;
+    }
+
 }
 
 displayCurrentHighscore();
+
+
+const askforInitials = function() {
+    return prompt(`What initials would you like your highscore under?`);
+}
 
 
 
@@ -133,6 +148,20 @@ let randomQuestionsArray = questionsArray.sort(() => Math.random() - 0.5);
 
 
 
+const startCountdownTimer = function() {
+    timer = setInterval(function() {
+        
+        timeLeft--;
+        countdownElement.textContent = `Countdown: ${timeLeft}s`
+
+        if(timeLeft <= 0) {
+            endOfGame();
+            clearInterval(timer);
+        }
+
+    }, 1000)
+}
+
 
 const startQuiz = function() {
     questionElement.textContent = randomQuestionsArray[questionNumber].question;
@@ -153,6 +182,7 @@ const nextQuestion = function() {
 const pressStartBtn = function() {
     quizSection.classList.toggle('hide');
     startBtn.classList.toggle('hide');
+    startCountdownTimer();
     startQuiz();
 }
 
@@ -163,9 +193,18 @@ const endOfGame = function() {
     randomQuestionsArray = questionsArray.sort(() => Math.random() - 0.5);
     
     // before we set the score back to 0, check if score is greater than the current high score
-    
+    if(score > currentHighscore) {
+        currentHighscore = score;
+        displayCurrentHighscore();
+    }
+
 
     score = 0;
+    currentGameScore.textContent = '';
+
+    timeLeft = 40;
+    countdownElement.textContent = 'Countdown: 40s';
+
 }
 
 
@@ -202,12 +241,12 @@ btnGrid.addEventListener('click', function(e) {
     if(e.target.innerHTML === randomQuestionsArray[questionNumber].correctAnswer) {
         correctOrWrongText.textContent = 'Correct!';
         score++;
-        displayCurrentGameScore();
         nextQuestion();
 
     } else if((e.target === allGridBtns[0] || e.target === allGridBtns[1] || e.target === allGridBtns[2] || e.target === allGridBtns[3]) && e.target.innerHTML !== randomQuestionsArray[questionNumber].correctAnswer) 
     {
         correctOrWrongText.textContent = 'Wrong!';
+        timeLeft = timeLeft - 10;
         nextQuestion();
     }
 })
