@@ -1,3 +1,4 @@
+// defining HTML elements
 const highscoreBtn = document.querySelector('#high-score-btn');
 const countdownElement = document.querySelector('#countdown');
 const questionContainer = document.querySelector('.question-container');
@@ -12,45 +13,16 @@ const allGridBtns = document.querySelectorAll('.option-btn');
 const currentHighscoreDisplay = document.querySelector('#display-highscore');
 const currentGameScore = document.querySelector('#current-game-score')
 
-// zero based
+// defining initial values of variables
 let questionNumber = 0;
 let score = 0;
 let currentHighscore = 0;
-
 let timeLeft = 40;
 let initials = '';
 
 
-// function to display the current highscore
-const displayCurrentHighscore = function() {
-    if(currentHighscore === 0) {
-        currentHighscoreDisplay.textContent = `Current High score: ${currentHighscore}`
-    } else if(currentHighscore >= 0) {
-        initials = askforInitials();
-        currentHighscoreDisplay.textContent = `Current High score by ${initials}: ${currentHighscore}`;
-    }
 
-}
-
-displayCurrentHighscore();
-
-
-const askforInitials = function() {
-    return prompt(`What initials would you like your highscore under?`);
-}
-
-
-
-// function to display the current game score
-const displayCurrentGameScore = function() {
-    currentGameScore.textContent = `Score: ${score}`;
-}
-
-
-
-
-
-
+// array of objects containing questions, options, and correct answers
 const questionsArray = [
     {
         question: 'Which of the following is not a truthy value?', 
@@ -143,11 +115,39 @@ const questionsArray = [
     }
 ]
 
+// sorting the question array randomly
 let randomQuestionsArray = questionsArray.sort(() => Math.random() - 0.5);
 
 
 
 
+
+// function to display the current highscore
+const displayCurrentHighscore = function() {
+    if(currentHighscore === 0) {
+        currentHighscoreDisplay.textContent = `Current High score: ${currentHighscore}`
+    } else if(currentHighscore >= 0) {
+        initials = askforInitials();
+        currentHighscoreDisplay.textContent = `Current High score by ${initials}: ${currentHighscore}`;
+    }
+
+}
+displayCurrentHighscore();
+
+
+// function that asks for the initials 
+const askforInitials = function() {
+    return prompt(`What initials would you like your highscore under?`);
+}
+
+
+// function to display the current game score
+const displayCurrentGameScore = function() {
+    currentGameScore.textContent = `Score: ${score}`;
+}
+
+
+// function that starts countdown timer
 const startCountdownTimer = function() {
     timer = setInterval(function() {
         
@@ -163,6 +163,7 @@ const startCountdownTimer = function() {
 }
 
 
+// function to start the quiz
 const startQuiz = function() {
     questionElement.textContent = randomQuestionsArray[questionNumber].question;
 
@@ -173,12 +174,13 @@ const startQuiz = function() {
     })
 }
 
-
+// function to move to the next question
 const nextQuestion = function() {
     questionNumber++;
     startQuiz();
 }
 
+// function to start the game once the start btn has been clicked
 const pressStartBtn = function() {
     quizSection.classList.toggle('hide');
     startBtn.classList.toggle('hide');
@@ -186,6 +188,7 @@ const pressStartBtn = function() {
     startQuiz();
 }
 
+// function that ends and resets the game
 const endOfGame = function() {
     quizSection.classList.toggle('hide');
     startBtn.classList.toggle('hide');
@@ -207,16 +210,7 @@ const endOfGame = function() {
 
 }
 
-
-
-
-startBtn.addEventListener('click', pressStartBtn)
-
-
-
-
-
-
+// function that toggles the high score screen
 const toggleHighScoreScreen = function() {
     questionContainer.classList.toggle("hide");
     highscoreScreen.classList.toggle("hide");
@@ -225,29 +219,41 @@ const toggleHighScoreScreen = function() {
 
 
 
+
+
+// event listeners
+
+startBtn.addEventListener('click', pressStartBtn)
+
 highscoreBtn.addEventListener('click', toggleHighScoreScreen)
 
-
-
-// choosing an option for the question
 btnGrid.addEventListener('click', function(e) {
-
-    if(questionNumber === 14) {
-        alert('out of Qs')
-        endOfGame();
-        return
-    }
 
     if(e.target.innerHTML === randomQuestionsArray[questionNumber].correctAnswer) {
         correctOrWrongText.textContent = 'Correct!';
         score++;
+
+        if(questionNumber === 14) {
+            alert('out of Qs')
+            endOfGame();
+            return
+        }
+
         nextQuestion();
 
     } else if((e.target === allGridBtns[0] || e.target === allGridBtns[1] || e.target === allGridBtns[2] || e.target === allGridBtns[3]) && e.target.innerHTML !== randomQuestionsArray[questionNumber].correctAnswer) 
     {
-        correctOrWrongText.textContent = 'Wrong!';
-        timeLeft = timeLeft - 10;
-        nextQuestion();
+
+        if(questionNumber === 14) {
+            alert('out of Qs')
+            endOfGame();
+            return
+        } else {
+            correctOrWrongText.textContent = 'Wrong!';
+            timeLeft = timeLeft - 10;
+            nextQuestion();
+        }
+
     }
 })
 
