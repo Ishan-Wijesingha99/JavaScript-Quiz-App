@@ -297,6 +297,9 @@ const endOfGame = function() {
 
     // reset the countdown element's text content to it's default
     countdownElement.textContent = 'Countdown: 40s';
+
+    // Get rid of correct or wrong message'
+    correctOrWrongText.textContent = '';
 }
 
 
@@ -342,6 +345,9 @@ btnGrid.addEventListener('click', function(e) {
             // end the game
             endOfGame();
 
+            // clear timer
+            clearInterval(timer);
+
             // end the function immediately using a guard clause
             return
         }
@@ -358,6 +364,9 @@ btnGrid.addEventListener('click', function(e) {
 
             // end the game
             endOfGame();
+
+            // clear timer
+            clearInterval(timer);
 
             // end the function immediately using a guard clause
             return
