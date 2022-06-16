@@ -17,4 +17,5 @@ Users can presses a button on the top-left of the screen to access the top 3 hig
 ![screenshot-3](./assets/images/screenshot-3.png)
 
 ## Link to deployed application
+https://ishan-wijesingha99.github.io/Module-4-Ishan-Wijesingha/
 
