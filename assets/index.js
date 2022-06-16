@@ -133,11 +133,11 @@ const displayHighscore1 = function() {
 
     if(currentHighscore1 === 0) {
         // by default, if the user hasn't played a single game yet, or they didn't manage to get a single question correct, just display the current high score as 0
-        currentHighscoreDisplay1.textContent = `Current High score: ${currentHighscore1}`
+        currentHighscoreDisplay1.textContent = `Current High score - ${currentHighscore1}`
     } else if(currentHighscore1 > 0) {
         // if the current highscore is greater than 0, then ask the user for their initials to record that highscore
         initials1 = askforInitials();
-        currentHighscoreDisplay1.textContent = `High score 1 by ${initials1}: ${currentHighscore1}`;
+        currentHighscoreDisplay1.textContent = `High score 1 by ${initials1} - ${currentHighscore1}`;
     }
 
 }
@@ -152,7 +152,7 @@ displayHighscore1();
 // function to display second highscore
 const displayHighscore2 = function() {
     initials2 = askforInitials();
-    currentHighscoreDisplay2.textContent = `High score 2 by ${initials2}: ${currentHighscore2}`;
+    currentHighscoreDisplay2.textContent = `High score 2 by ${initials2} - ${currentHighscore2}`;
 }
 
 
@@ -162,7 +162,7 @@ const displayHighscore2 = function() {
 // function to display third highscore
 const displayHighscore3 = function() {
     initials3 = askforInitials();
-    currentHighscoreDisplay3.textContent = `High score 3 by ${initials3}: ${currentHighscore3}`;
+    currentHighscoreDisplay3.textContent = `High score 3 by ${initials3} - ${currentHighscore3}`;
 }
 
 
@@ -231,7 +231,7 @@ const startQuiz = function() {
 const nextQuestion = function() {
     // increase questionNumber variable by 1
     questionNumber++;
-    
+
     // update the quiz section with the new question and new options
     startQuiz();
 }
@@ -328,8 +328,8 @@ btnGrid.addEventListener('click', function(e) {
     // if user clicks the correct btn
     if(e.target.innerHTML === randomQuestionsArray[questionNumber].correctAnswer) {
         
-        // display 'Correct!'
-        correctOrWrongText.textContent = 'Correct!';
+        // display 'CORRECT!'
+        correctOrWrongText.textContent = 'CORRECT!';
 
         // increase score by 1
         score++;
@@ -337,7 +337,7 @@ btnGrid.addEventListener('click', function(e) {
         // check if user has just answered the final question, in which case, end the game
         if(questionNumber === 14) {
             // alert user there are no more Qs to answer
-            alert('out of Qs')
+            alert('Out of questions. Well Done!');
 
             // end the game
             endOfGame();
@@ -354,7 +354,7 @@ btnGrid.addEventListener('click', function(e) {
 
         if(questionNumber === 14) {
             // if the user just answered the final question, alert them there are no more questions to answer
-            alert('out of Qs')
+            alert('Out of Questions. Well Done!');
 
             // end the game
             endOfGame();
@@ -362,8 +362,8 @@ btnGrid.addEventListener('click', function(e) {
             // end the function immediately using a guard clause
             return
         } else {
-            // display "Wrong!"
-            correctOrWrongText.textContent = 'Wrong!';
+            // display "WRONG!"
+            correctOrWrongText.textContent = 'WRONG!';
 
             // decrease timeLeft variable by 10
             timeLeft = timeLeft - 10;

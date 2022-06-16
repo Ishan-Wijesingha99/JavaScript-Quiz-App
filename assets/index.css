@@ -2,6 +2,17 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
+}
+
+#start-button {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 
@@ -11,6 +22,12 @@
     background-color: antiquewhite;
     border-radius: 5px;
     border: 3px solid rgb(24, 45, 107);
+    font-size: 22px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(167, 17, 167);
 }
 
 .header {
@@ -22,43 +39,81 @@
     margin-bottom: 50px;
 }
 
+#high-score-btn {
+    border: 3px solid rgb(24, 45, 107);
+    color: rgb(24, 45, 107);
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 15px;
+}
+
 #high-score-btn:hover {
     cursor: pointer;
-    color: purple;
-    font-weight: bold;
+    color: rgb(167, 17, 167);
+    border: 3px solid rgb(167, 17, 167);
     text-decoration: underline;
 }
 
+#countdown {
+    color: rgb(24, 45, 107);
+    font-weight: bold;
+    padding: 15px;
+}
+
+#current-game-score {
+    color: rgb(24, 45, 107);
+    font-weight: bold;
+}
+
+
 .question-container {
-    background-color: blue;
-    padding: 40px;
+    position: relative;
+    background-color: rgb(54, 54, 237);
+    padding: 80px;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    border-radius: 5px;
+    border: 3px solid rgb(24, 45, 107);
 }
 
 .highscore-screen {
-    background-color: rebeccapurple;
+    background-color: rgb(167, 17, 167);
     padding: 30px;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
     color: white;
+    width: 50%;
+    border-radius: 5px;
+    border: 3px solid rgb(24, 45, 107);
 }
+
+#highscore-heading {
+    text-decoration: underline;
+}
+
+#highscore-heading, #display-highscore-1, #display-highscore-2, #display-highscore-3 {
+    margin: 15px;
+    margin-bottom: 25px;
+}
+
+
 
 .hide {
     display: none;
 }
 
 #question {
-    font-size: 2rem;
-    color: white;
+    font-size: 2.5rem;
+    color: antiquewhite;
     margin: 15px;
+    margin-bottom: 30px;
 }
 
 #correct-or-wrong-text {
     font-size: 1.5rem;
-    color: white;
+    color: antiquewhite;
     margin: 15px;
 }
 
