@@ -43,15 +43,15 @@ const questionsArray = [
     },
 
     {
-        question: 'Which HTML element is responsible for all the content you see on a webpage?', 
-        options: ['body', 'head', 'html', 'heading'],
-        correctAnswer: 'body'
+        question: 'Which of the following is not a falsey value?', 
+        options: ['null', '20', 'undefined', '""'],
+        correctAnswer: '20'
     },
 
     {
-        question: 'What does CSS stand for?',
-        options: ['Capitulating Style Sheets', 'Cascading Style Sheets', 'Colourful Style Sheets', 'Computational Style Sheets'],
-        correctAnswer: 'Cascading Style Sheets'
+        question: 'What does true && false return?',
+        options: ['undefined', 'null', 'false', 'true'],
+        correctAnswer: 'false'
     },
 
     {
@@ -67,9 +67,9 @@ const questionsArray = [
     },
 
     {
-        question: 'Which of the following is the correct way to write a comment in CSS?',
+        question: 'Which of the following is the correct way to write a comment in JavaScript?',
         options: ['//comment', '/ comment /', `-- comment --`, '/* comment */'],
-        correctAnswer: '/* comment */'
+        correctAnswer: '//comment'
     },
 
     {
@@ -79,9 +79,9 @@ const questionsArray = [
     },
 
     {
-        question: 'Which attribute must you add to a HTML element for a webpage to open in a new tab?',
-        options: ['target="_window"', 'target="_new"', 'target="_tab"', 'target="_blank"'],
-        correctAnswer: 'target="_blank"'
+        question: 'What does false || true || false return?',
+        options: ['false', 'null', 'true', 'undefined'],
+        correctAnswer: 'true'
     },
 
     {
@@ -91,33 +91,33 @@ const questionsArray = [
     },
 
     {
-        question: 'Which of the following CSS properties control the underline of text?',
-        options: ['font-display: underline;', 'decorate-content: underline;', 'text-decoration: underline;', 'font-style: underline;'],
-        correctAnswer: 'text-decoration: underline;'
+        question: 'Which array method tests whether at least one element in the array passes a certain condition?',
+        options: ['.every()', '.flatMap()', '.Map()', '.some()'],
+        correctAnswer: '.some()'
     },
 
     {
-        question: 'In CSS, where do we define CSS variables?',
-        options: ['in body', 'in head', 'in :root', 'in *'],
-        correctAnswer: 'in :root'
+        question: 'Which array method can be used to loop over an array?',
+        options: ['.some()', '.forEach()', '.every()', '.filter()'],
+        correctAnswer: '.forEach()'
     },
 
     {
-        question: 'Which CSS property controls the font of the text?',
-        options: ['font-style', 'font-decoration', 'font-family', 'font-weight'],
-        correctAnswer: 'font-family'
+        question: 'What is the process that describes JavaScript objects getting access to methods from other JavaScript objects?',
+        options: ['Prototypal inheritance', 'Asynchronous inheritance', 'Parent inheritance', 'Bubbling'],
+        correctAnswer: 'Prototypal inheritance'
     },
 
     {
-        question: 'Which of the following is not apart of the CSS Box Model?',
-        options: ['Padding', 'Edges', 'Margin', 'Border'],
-        correctAnswer: 'Edges'
+        question: 'Which of the following can you use to inspect a function in the console?',
+        options: ['console.log()', 'console.functionLog()', 'console.methods()', 'console.dir()'],
+        correctAnswer: 'console.dir()'
     },
 
     {
-        question: 'Which of these is the largest HTML element?',
-        options: ['h1', 'section', 'h4', 'heading'],
-        correctAnswer: 'h1'
+        question: 'What is the type of the value "8"?',
+        options: ['NaN', 'boolean', 'string', 'number'],
+        correctAnswer: 'string'
     }
 ]
 
