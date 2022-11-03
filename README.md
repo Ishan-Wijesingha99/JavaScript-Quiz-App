@@ -1,4 +1,5 @@
-# Module-4-Ishan-Wijesingha
+# JavaScript-Quiz-App
+
 
 
 ## Link to deployed application
